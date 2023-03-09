@@ -1,11 +1,34 @@
+/*
+ * การต่อสาย
+ * 
+ * Loadcell hx711
+ * DT  -> 18
+ * SCK -> 19
+ * VCC -> 3.3v
+ * GND -> GND
+ * 
+ * TCS34725
+ * SDA  -> 21
+ * SCL  -> 22
+ * 3.3v -> 3.3v
+ * GND  -> GND
+ * 
+ * 
+ * ไลบรารี่เพิ่มเติม
+ * 1.Adafruit_TCS34725 โหลดจาก library manager ได้เลย กดติดตั้ง เลือกติดตั้งทั้งหมด
+ * 2.HX711 โหลดจาก library manager 
+ * 3.TridentTD_LineNotify โหลดจาก library manager 
+ * 
+ */
+ 
 #include <Wire.h>
 #include <Adafruit_TCS34725.h>
 #include <HX711.h>
 #include <TridentTD_LineNotify.h>
 
-#define SSID        "G6PD_2.4G"
-#define PASSWORD    "570610193"
-#define LINE_TOKEN  "7m68381D2LS8ByeflY4rVEf9pPEXMXllsuFRNGBTFfG"
+#define SSID        "ssid"
+#define PASSWORD    "pass"
+#define LINE_TOKEN  "linetoken"
 
 #define RED_NOTIFY 500    // ระดับสีแดงที่ต้องการแจ้งเตือน
 #define WEIGHT_NOTIFY 200  // ระดับน้ำหนักที่ต้องการแจ้งเตือน
@@ -16,6 +39,7 @@ Adafruit_TCS34725 tcs = Adafruit_TCS34725(TCS34725_INTEGRATIONTIME_50MS, TCS3472
 // Load Cell Setup
 HX711 scale;
 
+// pin สำหรับ loadcell
 const int DOUT_PIN = 18;
 const int CLK_PIN = 19;
 
