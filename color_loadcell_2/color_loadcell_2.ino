@@ -30,8 +30,8 @@
 #define BLYNK_TEMPLATE_NAME "Loadcell and Color"
 #define BLYNK_AUTH_TOKEN "auiQQ6M5S3pyXqBG5henvGKFoQreLOyy"
 
-#include <WiFi.h> // ไวไฟ
-#include <WiFiClient.h> // ไวไฟ
+#include <WiFi.h>                 // ไวไฟ
+#include <WiFiClient.h>           // ไวไฟ
 #include <BlynkSimpleEsp32.h>     // Blynk
 #include <Adafruit_TCS34725.h>    // เซนเซอร์สี
 #include <HX711.h>                // โหลดเซลล์
@@ -65,7 +65,6 @@ void setup()
 {
   Serial.begin(115200); // เริ่มทำงาน serial
 
-
   // เชื่อมต่อไวไฟ
   Blynk.begin(BLYNK_AUTH_TOKEN, SSID, PASSWORD);
   Serial.printf("\nWiFi connected\nIP : ");
@@ -83,14 +82,14 @@ void setup()
   // Load Cell Setup เริ่มทำงาน loadcell
   scale.begin(DOUT_PIN, CLK_PIN);
   scale.set_scale(770); // ตัวคูณสำหรับคาลิเบรทค่าน้ำหนัก
-  scale.tare(); // รีเซ็ต0
+  scale.tare();         // รีเซ็ต0
 }
 
 void loop()
 {
   Blynk.run(); // Blynk
 
-  uint16_t r, g, b, c; // ตัวแปรเก็บค่าสี
+  uint16_t r, g, b, c;            // ตัวแปรเก็บค่าสี
   tcs.getRawData(&r, &g, &b, &c); // อ่านค่าสีจากเซนเซอร์
   // แสดงค่าสีออก Serial monitor
   Serial.print("Red: ");
@@ -140,8 +139,8 @@ void loop()
       sample++;
       if (sample >= 5)
       {
-        sample = 0; // เครียร์ค่า
-        max_load = weight; // กำหนดค่าน้ำหนักสูงสุด
+        sample = 0;         // เครียร์ค่า
+        max_load = weight;  // กำหนดค่าน้ำหนักสูงสุด
         loadcell_state = 1; // เปลี่ยน state 1
       }
     }
@@ -155,6 +154,6 @@ void loop()
       max_load = 0;            // เครียร์ค่า max
     }
   }
-  
+
   delay(1000); // ดีเลย์ 1 วินาที
 }

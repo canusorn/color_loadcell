@@ -30,8 +30,8 @@
 #define BLYNK_TEMPLATE_NAME "Loadcell and Color"
 #define BLYNK_AUTH_TOKEN "_r6OyDzh3XTmXKplXH9bLtlKP8EvDbKs"
 
-#include <WiFi.h> // ไวไฟ
-#include <WiFiClient.h> // ไวไฟ
+#include <WiFi.h>                 // ไวไฟ
+#include <WiFiClient.h>           // ไวไฟ
 #include <BlynkSimpleEsp32.h>     // Blynk
 #include <Adafruit_TCS34725.h>    // เซนเซอร์สี
 #include <HX711.h>                // โหลดเซลล์
@@ -79,7 +79,7 @@ void setup()
   // Load Cell Setup เริ่มทำงาน loadcell
   scale.begin(DOUT_PIN, CLK_PIN);
   scale.set_scale(770); // ตัวคูณสำหรับคาลิเบรทค่าน้ำหนัก
-  scale.tare(); // รีเซ็ต0
+  scale.tare();         // รีเซ็ต0
 }
 
 void loop()
